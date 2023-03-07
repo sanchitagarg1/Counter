@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+
+
+    <body>
+        <div class="container-fluid">
+            <div class="content_div">
+
+                <div>Enter Value From 1 to 99999</div>
+                <div>
+                    <input type="number" id="counter_val">
+                    <button type="button" class="btn" id="btn" style="outline: none;">Start Counter</button>
+                </div>
+
+                
+            </div>
+
+            <div class="countdown">
+                <div id="div5">0</div>
+                <div id="div4">0</div>
+                <div id="div3">0</div>
+                <div id="div2">0</div>
+                <div id="div1">0</div>
+            </div>
+
+        </div>
+
+        <script>
+            var place1=0;
+            var place2=0;
+            var place3=0;
+            var place4=0;
+            var place5=0;
+
+            document.getElementById("btn").onclick=function(){
+                var counter_val =document.getElementById("counter_val").value;
+
+                document.getElementById("btn").setAttribute("disabled",true);
+                
+
+
+                
+
+
+
+                var i=0;
+                function counterChange() {
+                    setTimeout(function() {  
+                        place5=parseInt(i/10000);
+
+                        var rem=i%10000;
+
+                        place4=parseInt(rem/1000);
+
+                        var rem=i%1000;
+
+                        place3=parseInt(rem/100);
+
+                        var rem=i%100;
+
+                        place2=parseInt(rem/10);
+
+                        var rem=i%10;
+
+                        place1=parseInt(rem);
+
+
+                        document.getElementById("div5").innerHTML=place5;
+                        document.getElementById("div4").innerHTML=place4;
+                        document.getElementById("div3").innerHTML=place3;
+                        document.getElementById("div2").innerHTML=place2;
+                        document.getElementById("div1").innerHTML=place1;
+                        
+                        
+                        i++;                    
+                        if (i <= parseInt(counter_val)+1) {          
+                        counterChange();             
+                        }        
+                        else{
+                            document.getElementById("btn").removeAttribute("disabled");
+                            alert('Counter Finish');
+
+                            document.getElementById("div5").innerHTML='0';
+                            document.getElementById("div4").innerHTML='0';
+                            document.getElementById("div3").innerHTML='0';
+                            document.getElementById("div2").innerHTML='0';
+                            document.getElementById("div1").innerHTML='0';
+                            document.getElementById("counter_val").value="";
+
+
+
+
+                        }            
+                    }, 1000)
+                }
+
+                if (counter_val<0){
+                     alert('Invalid Input');
+                }
+                else{
+                    counterChange();
+
+                }
+
+
+
+
+
+
+
+
+
+
+            };
+
+
+        </script>
+
+
+    </body>
+</html>
